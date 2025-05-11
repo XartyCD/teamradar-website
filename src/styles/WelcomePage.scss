@@ -1,0 +1,20 @@
+.home-wrapper {
+  @apply min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900;
+}
+
+.hero-section {
+  @apply py-24 px-6;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+}
+
+.features-section {
+  @apply max-w-6xl mx-auto;
+}
+
+.feature-box {
+  @apply bg-gray-800 rounded-lg p-6 shadow hover:shadow-xl transition;
+}
