@@ -7,6 +7,7 @@ import PrivateRoutes from "./utils/PrivateRoutes"
 import PublicRoutes from "./utils/PublicRoutes"
 
 import WelcomePage from "./pages/WelcomePage"
+import ErrorPage from "./pages/ErrorPage"
 
 function App() {
   return (
@@ -14,12 +15,13 @@ function App() {
       <Router>
         <Routes>
           {/* Публичные роуты */}
-          {/* <Route element={<PublicRoutes />}>
-            <Route path="/register" element={<RegisterPage />} />
-          </Route> */}
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/welcome" element={<WelcomePage />} />
-          {/* <Route path="*" element={<ErrorPage />} /> */}
+          <Route element={<PublicRoutes />}>
+            <Route path="/" element={<WelcomePage />} />
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/welcome" element={<WelcomePage />} />
+          </Route>
+          <Route path="*" element={<ErrorPage />} />
 
           {/* Приватные роуты */}
           {/* <Route element={<PrivateRoutes />}>

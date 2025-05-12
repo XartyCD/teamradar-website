@@ -1,47 +1,92 @@
-import "../styles/WelcomePage.scss"
+import styles from "../styles/pages/WelcomePage/WelcomePage.module.scss"
+import { useEffect } from "react"
+import Header from "../components/Header"
 
 const WelcomePage = () => {
-  return (
-    <div className="home-wrapper">
-      <h1 className="text-4xl text-blue-500">Tailwind работает?</h1>
+  useEffect(() => {
+    const sections = document.querySelectorAll(`.${styles.fadeIn}`)
+    sections.forEach((el) => {
+      el.classList.add(styles.visible)
+    })
+  }, [])
 
-      <section className="hero-section text-center text-white">
-        <h1 className="text-5xl font-extrabold leading-tight mb-4">
-          TeamRadar — твоя команда всегда рядом
-        </h1>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
-          Discord-бот нового поколения. Автоматическое создание комнат,
-          управление ролями, голосовые лобби — всё в один клик.
+  return (
+    <div className={styles.wrapper}>
+      <Header></Header>
+      <section className={`${styles.hero} ${styles.fadeIn}`}>
+        <h1>TeamRadar — платформа для кооперативных игр</h1>
+        <p>
+          Объединяем геймеров. Сайт помогает найти пати, а Discord-сервер
+          создаёт для вас приватные каналы.
         </p>
-        <a
-          href="https://discord.com/oauth2/authorize?client_id=ВАШ_ID&scope=bot+applications.commands&permissions=8"
-          className="inline-block bg-blue-600 hover:bg-blue-700 transition px-6 py-3 rounded text-white font-semibold text-lg shadow"
-        >
-          ➕ Добавить TeamRadar в Discord
+        <a href="#how" className={styles.cta}>
+          Как это работает
         </a>
       </section>
 
-      <section className="features-section grid grid-cols-1 md:grid-cols-3 gap-6 px-6 py-16 text-white">
-        <div className="feature-box">
-          <h2 className="text-xl font-bold mb-2">📦 Автоматизация</h2>
-          <p className="text-gray-300">
-            Бот сам создаёт категории, каналы и роли — тебе остаётся только
-            играть.
-          </p>
-        </div>
-        <div className="feature-box">
-          <h2 className="text-xl font-bold mb-2">🧠 Умная логика</h2>
-          <p className="text-gray-300">
-            Распознаёт команды, отслеживает активности, ведёт логи событий.
-          </p>
-        </div>
-        <div className="feature-box">
-          <h2 className="text-xl font-bold mb-2">🎮 Для геймеров</h2>
-          <p className="text-gray-300">
-            Поддержка голосовых комнат, ролей по играм, быстрых реакций и меток.
-          </p>
+      <section className={`${styles.section} ${styles.fadeIn}`} id="features">
+        <h2>🎮 Возможности платформы</h2>
+        <div className={styles.featuresGrid}>
+          <div>
+            <h3>🔎 Поиск игроков</h3>
+            <p>
+              Фильтруй по играм, ролям и времени — находи себе пати на вечер.
+            </p>
+          </div>
+          <div>
+            <h3>🤖 Интеграция с Discord</h3>
+            <p>
+              Создаём голосовые и текстовые каналы автоматически, когда ты
+              находишь тиммейтов.
+            </p>
+          </div>
+          <div>
+            <h3>📅 Гибкие заявки</h3>
+            <p>Создавай свои заявки или присоединяйся к другим.</p>
+          </div>
+          <div>
+            <h3>🔒 Приватные комнаты</h3>
+            <p>
+              Каждая команда получает своё личное пространство на
+              Discord-сервере.
+            </p>
+          </div>
         </div>
       </section>
+
+      <section className={`${styles.section} ${styles.fadeIn}`} id="how">
+        <h2>🚀 Как это работает</h2>
+        <ol>
+          <li>Ты заходишь на сайт и создаёшь заявку на поиск команды.</li>
+          <li>Находишь пати или к тебе присоединяются другие.</li>
+          <li>Сайт отправляет информацию Discord-боту.</li>
+          <li>На сервере создаётся канал — можно играть!</li>
+        </ol>
+      </section>
+
+      <section className={`${styles.section} ${styles.fadeIn}`} id="about">
+        <h2>🌐 О TeamRadar</h2>
+        <p>
+          Это проект, рожденный геймерами для геймеров. Мы устали искать
+          тиммейтов рандомно — теперь всё организовано, красиво и удобно.
+          TeamRadar — связующее звено между геймерами.
+        </p>
+      </section>
+
+      <section className={`${styles.section} ${styles.fadeIn}`} id="join">
+        <h2>🤝 Присоединяйся к нам</h2>
+        <p>
+          Мы постоянно развиваемся. Участвуй, предлагай идеи, формируй команды и
+          помоги нам сделать кооператив удобным.
+        </p>
+        <a href="https://discord.gg/a4DTUfSMmy" className={styles.cta}>
+          Discord сервер
+        </a>
+      </section>
+
+      <footer className={`${styles.footer} ${styles.fadeIn}`}>
+        <p>© 2025 TeamRadar prod. by Xarty</p>
+      </footer>
     </div>
   )
 }

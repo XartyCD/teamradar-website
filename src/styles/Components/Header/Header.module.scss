@@ -1,0 +1,132 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  transition: background 0.3s ease;
+  background: transparent;
+}
+
+.navActive {
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 1rem 0;
+}
+
+.navList {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLink {
+  position: relative;
+  color: white;
+  font-size: 1.1rem;
+  transition: opacity 0.3s;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(to right, #dc2626, #f59e0b);
+    transition: width 0.3s;
+  }
+
+  &.up.active::before {
+    left: 0;
+    width: 100%;
+  }
+
+  &.down.active::before {
+    right: 0;
+    width: 100%;
+  }
+}
+
+.active {
+  opacity: 1;
+}
+
+.burger {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(31, 41, 55, 0.9);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 99;
+}
+
+.open {
+  transform: translateX(0%);
+}
+
+.closed {
+  transform: translateX(100%);
+}
+
+.closeContainer {
+  align-self: flex-end;
+  padding: 1rem;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1.5rem;
+}
+
+.mobileLink {
+  font-size: 1.25rem;
+  color: white;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.mobileActive {
+  opacity: 1;
+  font-weight: 700;
+  background: linear-gradient(to right, #fca5a5, #fdba74);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
