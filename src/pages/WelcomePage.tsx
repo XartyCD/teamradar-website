@@ -15,6 +15,11 @@ const WelcomePage = () => {
       <Header></Header>
       <section className={`${styles.hero} ${styles.fadeIn}`}>
         <h1>TeamRadar — платформа для кооперативных игр</h1>
+        <div className="bg-red-500 text-white p-4 rounded-lg shadow-lg">
+          Tailwind работает 🎉
+        </div>
+
+        <p className="text-">Хрусталев Иван Алексеевич</p>
         <p>
           Объединяем геймеров. Сайт помогает найти пати, а Discord-сервер
           создаёт для вас приватные каналы.
