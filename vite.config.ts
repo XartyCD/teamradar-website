@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react"
 import path from "path"
 import { fileURLToPath } from "url"
 
-// ESM-совместимость
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -12,7 +11,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: "", // Ничего не подключаем, раз variables.scss не нужен
+        additionalData: "", // если не используешь variables.scss
       },
     },
   },

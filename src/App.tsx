@@ -3,16 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
 
-import PrivateRoutes from "./utils/PrivateRoutes"
 import PublicRoutes from "./utils/PublicRoutes"
+import ScrollToTop from "./utils/ScroolToTop"
 
 import WelcomePage from "./pages/WelcomePage"
+import BoardPage from "./pages/BoardPage"
 import ErrorPage from "./pages/ErrorPage"
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
+        <ScrollToTop />
         <Routes>
           {/* Публичные роуты */}
           <Route element={<PublicRoutes />}>
@@ -20,6 +22,9 @@ function App() {
           </Route>
           <Route element={<PublicRoutes />}>
             <Route path="/welcome" element={<WelcomePage />} />
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/board" element={<BoardPage />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />
 

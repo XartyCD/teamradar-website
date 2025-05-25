@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+/public/videos/*
+/public/game-logos/*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
