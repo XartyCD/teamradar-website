@@ -1,7 +1,8 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useMemo } from "react"
 import { FaTimes } from "react-icons/fa"
 import { motion, AnimatePresence } from "framer-motion"
 import { Range, getTrackBackground } from "react-range"
+import "../styles/Components/ButtonAddAdsPopup.scss"
 
 import games from "../data/games"
 
@@ -16,11 +17,13 @@ interface Game {
 }
 
 export default function AddAdsPopup({ onClose }: Props) {
-  const [players, setPlayers] = useState(1)
+  const [players, setPlayers] = useState(4)
   const [selectedGames, setSelectedGames] = useState<Game[]>([])
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+
+  const [showRange, setShowRange] = useState(false)
 
   const [searchTerm, setSearchTerm] = useState("")
   const STEP = 1
@@ -52,6 +55,23 @@ export default function AddAdsPopup({ onClose }: Props) {
     }
   }, [])
 
+  // фикс кривого ползунка при открытии Popup
+  useEffect(() => {
+    let raf: number
+    let timeout: NodeJS.Timeout
+
+    raf = requestAnimationFrame(() => {
+      timeout = setTimeout(() => {
+        setShowRange(true)
+      }, 140) // чуть дольше времени анимации
+    })
+
+    return () => {
+      cancelAnimationFrame(raf)
+      clearTimeout(timeout)
+    }
+  }, [])
+
   const removeGame = (name: string) => {
     setSelectedGames((prev) => prev.filter((g) => g.name !== name))
   }
@@ -67,6 +87,16 @@ export default function AddAdsPopup({ onClose }: Props) {
     setSearchTerm("")
   }
 
+  const fireflies = useMemo(() => {
+    return Array.from({ length: 12 }).map((_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 5}s`,
+      duration: `${3 + Math.random() * 3}s`,
+    }))
+  }, []) // один раз при монтировании
+
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4">
       <motion.div
@@ -74,7 +104,7 @@ export default function AddAdsPopup({ onClose }: Props) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-xl p-8 rounded-2xl bg-gradient-to-br from-[#1f1c2c] to-[#302b63] text-white shadow-2xl border border-white/10"
+        className="relative w-full max-w-xl p-4 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1f1c2c] to-[#302b63] text-white shadow-2xl border border-white/10"
       >
         <button
           className="absolute top-4 right-4 text-white hover:text-red-400 transition cursor-pointer"
@@ -83,11 +113,13 @@ export default function AddAdsPopup({ onClose }: Props) {
           <FaTimes className="text-xl" />
         </button>
 
-        <h3 className="text-2xl font-bold mb-6">Разместить объявление</h3>
+        <h3 className="text-xl sm:text-2xl font-bold mb-6">
+          Разместить объявление
+        </h3>
 
         <div className="mb-6">
-          <label className="block mb-2 text-sm font-medium text-gray-300">
-            Количество игроков
+          <label className="block mb-2 text-xs sm:text-sm font-medium text-gray-300">
+            Количество игроков (включая вас)
           </label>
           <div className="flex gap-2">
             {[2, 3, 4, 5, 6].map((num) => (
@@ -107,7 +139,7 @@ export default function AddAdsPopup({ onClose }: Props) {
           </div>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-3 sm:mb-6">
           <label className="block text-sm font-medium text-gray-300">
             Возраст тиммейтов
           </label>
@@ -148,35 +180,42 @@ export default function AddAdsPopup({ onClose }: Props) {
           </div>
 
           <div className="flex flex-col items-center gap-2 mt-4">
-            <Range
-              values={ageRange}
-              step={STEP}
-              min={MIN}
-              max={MAX}
-              onChange={(values) => setAgeRange(values as [number, number])}
-              renderTrack={({ props, children }) => (
-                <div
-                  {...props}
-                  className="w-full h-3 rounded-full bg-gradient-to-r from-zinc-700 via-slate-600 to-zinc-700"
-                  style={{
-                    background: getTrackBackground({
-                      values: ageRange,
-                      colors: ["#334155", "#06b6d4", "#334155"],
-                      min: MIN,
-                      max: MAX,
-                    }),
-                  }}
-                >
-                  {children}
-                </div>
-              )}
-              renderThumb={({ props }) => (
-                <div
-                  {...props}
-                  className="w-5 h-5 bg-cyan-400 border-2 border-white rounded-full shadow-md"
-                />
-              )}
-            />
+            {showRange && (
+              <Range
+                values={ageRange}
+                step={STEP}
+                min={MIN}
+                max={MAX}
+                onChange={(values) => setAgeRange(values as [number, number])}
+                renderTrack={({ props, children }) => (
+                  <div
+                    {...props}
+                    className="w-full h-3 rounded-full bg-gradient-to-r from-zinc-700 via-slate-600 to-zinc-700"
+                    style={{
+                      background: getTrackBackground({
+                        values: ageRange,
+                        colors: ["#334155", "#06b6d4", "#334155"],
+                        min: MIN,
+                        max: MAX,
+                      }),
+                    }}
+                  >
+                    {children}
+                  </div>
+                )}
+                renderThumb={({ props }) => {
+  const { key, ...restProps } = props
+  return (
+    <div
+      key={key}
+      {...restProps}
+      className="w-5 h-5 bg-cyan-400 border-2 border-white rounded-full shadow-md"
+    />
+  )
+}}
+
+              />
+            )}
 
             <p className="text-sm text-white/50 text-center w-full">
               Возраст: от{" "}
@@ -187,7 +226,7 @@ export default function AddAdsPopup({ onClose }: Props) {
           </div>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-2">
           <div className="flex items-center justify-between mb-3">
             <span className="text-base font-semibold text-white">
               Выбери игру{" "}
@@ -298,6 +337,43 @@ export default function AddAdsPopup({ onClose }: Props) {
               ))}
             </AnimatePresence>
           </div>
+        </div>
+        <div className="mt-8">
+          <motion.button
+            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.02 }}
+            className="cursor-pointer relative overflow-hidden w-full px-3 py-3 sm:px-6 text-lg font-bold text-white rounded-xl bg-[#0f0f1f] shadow-md shadow-indigo-900 group transition-all duration-300 hover:bg-[#1c1b36]"
+            onClick={() => {
+              console.log("Объявление размещено!")
+            }}
+          >
+            {/* Светлячки */}
+            {fireflies.map((f) => (
+              <span
+                key={f.id}
+                className="absolute w-[3px] h-[3px] rounded-full bg-white opacity-0 animate-firefly pointer-events-none"
+                style={{
+                  top: f.top,
+                  left: f.left,
+                  animationDelay: f.delay,
+                  animationDuration: f.duration,
+                }}
+              />
+            ))}
+
+            {/* Мягкое сияние при наведении */}
+            <span className="absolute inset-0 bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-800 bg-[length:200%_100%] bg-left group-hover:bg-right opacity-0 group-hover:opacity-80 transition-all duration-1000 ease-in-out blur-md pointer-events-none" />
+
+            {/* Блик */}
+            <span className="absolute top-0 left-[-75%] w-[50%] h-full bg-gradient-to-r from-white/10 via-white/30 to-white/0 transform skew-x-[-20deg] opacity-0 group-hover:opacity-100 transition-opacity duration-700 group-hover:animate-shimmer pointer-events-none" />
+
+            {/* Энергетическая волна */}
+            <span className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100 animate-energy-wave pointer-events-none" />
+
+            <span className="relative z-10 text-md sm:text-xl">
+              Разместить объявление
+            </span>
+          </motion.button>
         </div>
       </motion.div>
     </div>

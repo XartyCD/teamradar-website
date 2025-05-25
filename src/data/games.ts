@@ -409,7 +409,7 @@ const games = [
   {
     name: "Red Dead Online",
     gradient: "from-red-800 to-yellow-600",
-    logo: "/game-logos/red-dead-online.webp",
+    logo: "/game-logos/rdr2.webp",
   },
   {
     name: "Fortnite",
@@ -424,7 +424,7 @@ const games = [
   {
     name: "World of Warcraft",
     gradient: "from-amber-700 to-yellow-300",
-    logo: "/game-logos/world-of-warcraft.webp",
+    logo: "/game-logos/warcraft.webp",
   },
   {
     name: "War Thunder",
@@ -617,106 +617,202 @@ const games = [
     logo: "/game-logos/eve-online.webp",
   },
   {
-  name: "Call to Arms",
-  gradient: "from-red-700 to-yellow-500",
-  logo: "/game-logos/call-to-arms.webp",
-},
-{
-  name: "Chained Together",
-  gradient: "from-blue-600 to-purple-500",
-  logo: "/game-logos/chained-together.webp",
-},
-{
-  name: "Clone Drone in the Danger Zone",
-  gradient: "from-rose-600 to-indigo-400",
-  logo: "/game-logos/clone-drone-in-the-danger-zone.webp",
-},
-{
-  name: "Company of Heroes",
-  gradient: "from-teal-700 to-emerald-400",
-  logo: "/game-logos/company-of-heroes.webp",
-},
-{
-  name: "DEVOUR",
-  gradient: "from-amber-800 to-red-500",
-  logo: "/game-logos/devour.webp",
-},
-{
-  name: "Far Cry 5",
-  gradient: "from-cyan-500 to-sky-400",
-  logo: "/game-logos/far-cry5.webp",
-},
-{
-  name: "Goose Goose Duck",
-  gradient: "from-yellow-400 to-lime-500",
-  logo: "/game-logos/goose-goose-duck.webp",
-},
-{
-  name: "Halo Infinite",
-  gradient: "from-indigo-700 to-sky-600",
-  logo: "/game-logos/halo-infinite.webp",
-},
-{
-  name: "Heroes & Generals",
-  gradient: "from-zinc-800 to-orange-500",
-  logo: "/game-logos/heroes-and-generals.webp",
-},
-{
-  name: "Just Cause 3",
-  gradient: "from-lime-600 to-amber-400",
-  logo: "/game-logos/just-cause3.webp",
-},
-{
-  name: "Men of War",
-  gradient: "from-blue-800 to-slate-500",
-  logo: "/game-logos/men-of-war.webp",
-},
-{
-  name: "Mini Royale",
-  gradient: "from-sky-700 to-cyan-300",
-  logo: "/game-logos/mini-royale.webp",
-},
-{
-  name: "Mount & Blade II: Bannerlord",
-  gradient: "from-emerald-500 to-yellow-400",
-  logo: "/game-logos/mount-and-blade2-bannerlord.webp",
-},
-{
-  name: "MudRunner",
-  gradient: "from-gray-800 to-orange-400",
-  logo: "/game-logos/mudrunner.webp",
-},
-{
-  name: "Propnight",
-  gradient: "from-pink-600 to-red-400",
-  logo: "/game-logos/propnight.webp",
-},
-{
-  name: "Sins of a Solar Empire: Rebellion",
-  gradient: "from-slate-900 to-indigo-500",
-  logo: "/game-logos/sins-of-a-solar-empire-rebellion.webp",
-},
-{
-  name: "Total War",
-  gradient: "from-orange-600 to-yellow-400",
-  logo: "/game-logos/total-war.webp",
-},
-{
-  name: "Titanfall 2",
-  gradient: "from-zinc-700 to-blue-400",
-  logo: "/game-logos/titanfall2.webp",
-},
-{
-  name: "Super Bunny Man",
-  gradient: "from-pink-500 to-amber-300",
-  logo: "/game-logos/super-bunny-man.webp",
-},
-{
-  name: "Stronghold Crusader",
-  gradient: "from-yellow-700 to-red-300",
-  logo: "/game-logos/stronghold-crusader.webp",
-}
+    name: "Call to Arms",
+    gradient: "from-red-700 to-yellow-500",
+    logo: "/game-logos/call-to-arms.webp",
+  },
+  {
+    name: "Chained Together",
+    gradient: "from-blue-600 to-purple-500",
+    logo: "/game-logos/chained-together.webp",
+  },
+  {
+    name: "Clone Drone in the Danger Zone",
+    gradient: "from-rose-600 to-indigo-400",
+    logo: "/game-logos/clone-drone-in-the-danger-zone.webp",
+  },
+  {
+    name: "Company of Heroes",
+    gradient: "from-teal-700 to-emerald-400",
+    logo: "/game-logos/company-of-heroes.webp",
+  },
+  {
+    name: "DEVOUR",
+    gradient: "from-amber-800 to-red-500",
+    logo: "/game-logos/devour.webp",
+  },
+  {
+    name: "Far Cry 5",
+    gradient: "from-cyan-500 to-sky-400",
+    logo: "/game-logos/far-cry5.webp",
+  },
+  {
+    name: "Goose Goose Duck",
+    gradient: "from-yellow-400 to-lime-500",
+    logo: "/game-logos/goose-goose-duck.webp",
+  },
+  {
+    name: "Halo Infinite",
+    gradient: "from-indigo-700 to-sky-600",
+    logo: "/game-logos/halo-infinite.webp",
+  },
+  {
+    name: "Heroes & Generals",
+    gradient: "from-zinc-800 to-orange-500",
+    logo: "/game-logos/heroes-and-generals.webp",
+  },
+  {
+    name: "Just Cause 3",
+    gradient: "from-lime-600 to-amber-400",
+    logo: "/game-logos/just-cause3.webp",
+  },
+  {
+    name: "Men of War",
+    gradient: "from-blue-800 to-slate-500",
+    logo: "/game-logos/men-of-war.webp",
+  },
+  {
+    name: "Mini Royale",
+    gradient: "from-sky-700 to-cyan-300",
+    logo: "/game-logos/mini-royale.webp",
+  },
+  {
+    name: "Mount & Blade II: Bannerlord",
+    gradient: "from-emerald-500 to-yellow-400",
+    logo: "/game-logos/mount-and-blade2-bannerlord.webp",
+  },
+  {
+    name: "MudRunner",
+    gradient: "from-gray-800 to-orange-400",
+    logo: "/game-logos/mudrunner.webp",
+  },
+  {
+    name: "Propnight",
+    gradient: "from-pink-600 to-red-400",
+    logo: "/game-logos/propnight.webp",
+  },
+  {
+    name: "Sins of a Solar Empire: Rebellion",
+    gradient: "from-slate-900 to-indigo-500",
+    logo: "/game-logos/sins-of-a-solar-empire-rebellion.webp",
+  },
+  {
+    name: "Total War",
+    gradient: "from-orange-600 to-yellow-400",
+    logo: "/game-logos/total-war.webp",
+  },
+  {
+    name: "Titanfall 2",
+    gradient: "from-zinc-700 to-blue-400",
+    logo: "/game-logos/titanfall2.webp",
+  },
+  {
+    name: "Super Bunny Man",
+    gradient: "from-pink-500 to-amber-300",
+    logo: "/game-logos/super-bunny-man.webp",
+  },
+  {
+    name: "Stronghold Crusader",
+    gradient: "from-yellow-700 to-red-300",
+    logo: "/game-logos/stronghold-crusader.webp",
+  },
+  {
+    name: "Spy Party",
+    gradient: "from-slate-600 to-green-700",
+    logo: "/game-logos/spy-party.webp",
+  },
 
+  // - - - - - -  - -!!
+  {
+    name: "Suspects: Mystery Mansion",
+    gradient: "from-rose-600 to-violet-400",
+    logo: "/game-logos/suspects.webp",
+  },
+  {
+    name: "Paladins",
+    gradient: "from-cyan-700 to-indigo-500",
+    logo: "/game-logos/paladins.webp",
+  },
+  {
+    name: "LOCKDOWN Protocol",
+    gradient: "from-slate-800 to-red-500",
+    logo: "/game-logos/lockdown-protocol.webp",
+  },
+  {
+    name: "Voidtrain",
+    gradient: "from-yellow-500 to-gray-600",
+    logo: "/game-logos/voidtrain.webp",
+  },
+  {
+    name: "The Planet Crafter",
+    gradient: "from-sky-600 to-emerald-400",
+    logo: "/game-logos/planet-crafter.webp",
+  },
+  {
+    name: "SMITE",
+    gradient: "from-orange-600 to-blue-600",
+    logo: "/game-logos/smite.webp",
+  },
+  {
+    name: "Ghost Watchers",
+    gradient: "from-purple-900 to-gray-400",
+    logo: "/game-logos/ghost-watchers.webp",
+  },
+  {
+    name: "Hospital 666",
+    gradient: "from-red-700 to-black",
+    logo: "/game-logos/hospital-666.webp",
+  },
+  {
+    name: "Liar's Bar",
+    gradient: "from-yellow-700 to-red-400",
+    logo: "/game-logos/liars-bar.webp",
+  },
+  {
+    name: "Content Warning",
+    gradient: "from-green-700 to-yellow-300",
+    logo: "/game-logos/content-warning.webp",
+  },
+  {
+    name: "Demonologist",
+    gradient: "from-zinc-900 to-red-700",
+    logo: "/game-logos/demonologist.webp",
+  },
+  {
+    name: "Supermarket Together",
+    gradient: "from-pink-400 to-lime-300",
+    logo: "/game-logos/supermarket-together.webp",
+  },
+  {
+    name: "Sunkenland",
+    gradient: "from-teal-700 to-cyan-300",
+    logo: "/game-logos/sunkenland.webp",
+  },
+  {
+    name: "Stranded Deep",
+    gradient: "from-blue-500 to-yellow-200",
+    logo: "/game-logos/stranded-deep.webp",
+  },
+  {
+    name: "ELDEN RING",
+    gradient: "from-green-900 to-yellow-500",
+    logo: "/game-logos/elden-ring.webp",
+  },
+  {
+    name: "SnowRunner",
+    gradient: "from-blue-800 to-white",
+    logo: "/game-logos/snowrunner.webp",
+  },
+  {
+    name: "Prison Life 2",
+    gradient: "from-stone-600 to-orange-500",
+    logo: "/game-logos/prison-life-2.webp",
+  },
+  {
+    name: "Good Company",
+    gradient: "from-emerald-600 to-amber-300",
+    logo: "/game-logos/good-company.webp",
+  },
 ]
 
 export default games
