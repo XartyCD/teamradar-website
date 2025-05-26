@@ -3,6 +3,8 @@ import { motion } from "framer-motion"
 import { FaPlus } from "react-icons/fa"
 import AddAdsPopup from "../components/AddAdsPopup"
 
+import { useLockPageScroll } from "../utils/useLockBodyScroll"
+
 const mockAds = [
   {
     id: 1,
@@ -30,6 +32,7 @@ const mockAds = [
 
 export default function AnnouncementBoard() {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
+  useLockPageScroll(isPopupOpen)
 
   return (
     <section className="relative py-24 px-6 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white min-h-screen">

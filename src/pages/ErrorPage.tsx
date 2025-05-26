@@ -3,6 +3,8 @@ import { motion } from "framer-motion"
 import { useEffect, useMemo, useState } from "react"
 import styles from "../styles/pages/ErrorPage/ErrorPage.module.scss"
 
+import { useLockPageScroll } from "../utils/useLockBodyScroll"
+
 interface Blip {
   id: number
   top: string
@@ -39,6 +41,8 @@ const ErrorPage = () => {
   const [blipsLeft, setBlipsLeft] = useState<Blip[]>([])
   const [blipsRight, setBlipsRight] = useState<Blip[]>([])
   const [sweepAngle, setSweepAngle] = useState(0)
+
+  useLockPageScroll(true)
 
   const stars = useMemo<Star[]>(
     () =>
