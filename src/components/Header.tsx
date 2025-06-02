@@ -17,7 +17,6 @@ export default function LendingMenu() {
     { name: "Доска объявлений", path: "/board" },
     { name: "Анкеты", path: "/forms" },
     { name: "Сообщество", path: "/community" },
-    { name: "О проекте", path: "/about" },
     { name: "Профиль", path: "/profile" },
   ]
 
@@ -34,7 +33,23 @@ export default function LendingMenu() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setNavHaveBackground(window.scrollY > 100)
+      const scrollY = window.scrollY
+      switch (location.pathname) {
+        case "/":
+          setNavHaveBackground(scrollY > 100)
+          break
+        case "/board":
+          setNavHaveBackground(true)
+          break
+        case "/forms":
+          setNavHaveBackground(true)
+          break
+        case "/profile":
+          setNavHaveBackground(true)
+          break
+        default:
+          setNavHaveBackground(scrollY > 50)
+      }
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -43,7 +58,7 @@ export default function LendingMenu() {
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [])
+  }, [location.pathname])
 
   return (
     <nav

@@ -8,6 +8,8 @@ import ScrollToTop from "./utils/ScroolToTop"
 
 import WelcomePage from "./pages/WelcomePage"
 import BoardPage from "./pages/BoardPage"
+import AnketsPage from "./pages/AnketsPage"
+import CommunityPage from "./pages/CommunityPage"
 import ErrorPage from "./pages/ErrorPage"
 
 function App() {
@@ -26,6 +28,16 @@ function App() {
           <Route element={<PublicRoutes />}>
             <Route path="/board" element={<BoardPage />} />
           </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/forms" element={<AnketsPage />} />
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/community" element={<CommunityPage />} />
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/community/:section" element={<CommunityPage />} />
+          </Route>
+
           <Route path="*" element={<ErrorPage />} />
 
           {/* Приватные роуты */}
